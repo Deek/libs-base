@@ -307,40 +307,7 @@ setPermissions(NSString *file)
 static BOOL
 writeDictionary(NSDictionary *dict, NSString *file)
 {
-  if ([file length] == 0)
-    {
-      NSLog(@"Defaults database filename is empty when writing");
-    }
-  else if (nil == dict)
-    {
-      NSFileManager	*mgr = [NSFileManager defaultManager];
-
-      return [mgr removeFileAtPath: file handler: nil];
-    }
-  else
-    {
-      NSData	*data;
-      NSString	*err;
-
-      err = nil;
-      data = [NSPropertyListSerialization dataFromPropertyList: dict
-	       format: NSPropertyListXMLFormat_v1_0
-	       errorDescription: &err];
-      if (data == nil)
-	{
-	  NSLog(@"Failed to serialize defaults database for writing: %@", err);
-	}
-      else if ([data writeToFile: file atomically: YES] == NO)
-	{
-	  NSLog(@"Failed to write defaults database to file: %@", file);
-	}
-      else
-	{
-	  setPermissions(file);
-	  return YES;
-	}
-    }
-  return NO;
+	return [dict writeToFile: file atomically: YES];
 }
 
 /**
