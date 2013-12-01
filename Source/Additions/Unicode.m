@@ -64,6 +64,7 @@ typedef struct {unichar from; unsigned char to;} _ucc_;
 #include "unicode/latin2.h"
 #include "unicode/latin9.h"
 #include "unicode/nextstep.h"
+#include "unicode/symbol.h"
 #include "unicode/caseconv.h"
 #include "unicode/cop.h"
 #include "unicode/decomp.h"
@@ -190,7 +191,7 @@ static struct _strenc_ str_encoding_table[] = {
   {NSISOLatin1StringEncoding,
     "NSISOLatin1StringEncoding","ISO-8859-1",1,1,0},
   {NSSymbolStringEncoding,
-    "NSSymbolStringEncoding","",0,0,0},
+    "NSSymbolStringEncoding","",0,1,0},
   {NSNonLossyASCIIStringEncoding,
     "NSNonLossyASCIIStringEncoding","",0,1,0},
   {NSShiftJISStringEncoding,
@@ -1280,12 +1281,10 @@ GSToUnicode(unichar **dst, unsigned int *size, const unsigned char *src,
 	table = Thai_char_to_uni_table;
 	goto tables;
 	
-#if 0
       case NSSymbolStringEncoding:
 	base = Symbol_conv_base;
 	table = Symbol_char_to_uni_table;
 	goto tables;
-#endif
 
 tables:
 	if (dst == 0)
@@ -2296,13 +2295,11 @@ bases:
 	tsize = Thai_uni_to_char_table_size;
 	goto tables;
 
-#if 0
       case NSSymbolStringEncoding:
 	base = Symbol_conv_base;
 	table = Symbol_uni_to_char_table;
 	tsize = Symbol_uni_to_char_table_size;
 	goto tables;
-#endif
 
       case NSGSM0338StringEncoding:
 	base = 0;
