@@ -26,6 +26,7 @@
 #import "GSURLPrivate.h"
 #import "Foundation/NSDictionary.h"
 #import "Foundation/NSEnumerator.h"
+#import "Foundation/NSException.h"
 #import "Foundation/NSScanner.h"
 #import "Foundation/NSSet.h"
 #import "Foundation/NSValue.h"

@@ -70,6 +70,7 @@
 #import "Foundation/NSTimeZone.h"
 #import "Foundation/NSURL.h"
 #import "Foundation/NSURLHandle.h"
+#import "Foundation/NSURLRequest.h"
 #import "Foundation/NSValue.h"
 
 /* Avoid problems on systems where the xml headers use 'id'
